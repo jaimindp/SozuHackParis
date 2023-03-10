@@ -103,7 +103,7 @@
 .button_second { 
   align-self: center;
   width: 100%;
-  height: 32px;
+  min-height: 32px;
   border-radius: 12px;
   text-align: center;
   cursor: pointer;
