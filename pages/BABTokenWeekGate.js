@@ -269,7 +269,12 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
 
   const syncNotify = () => (
     <div className={styles.status_box}>
-      <Image src={iconAttention} alt={"icon check mark"} />
+      <div className={styles.status_tumb}>
+        <Image
+          src={iconAttention}
+          alt={"icon check mark"}
+        />
+      </div>
       <div className={styles.message}>
         {error && <p>{`Error! ${error}`}</p>}
         {!error && notify && <p>{notify}</p>}

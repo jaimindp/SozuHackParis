@@ -10,7 +10,7 @@ import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
-    mainnet,
+    // mainnet,
     polygon,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],

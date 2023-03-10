@@ -38,7 +38,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
 
-        <div>
+        <div className={styles.input_box}>
           <input
             className={styles.input}
             placeholder='enter address'
