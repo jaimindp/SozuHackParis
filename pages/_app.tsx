@@ -30,7 +30,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'KnowYourCat BABTokenWeek Gate',
+  appName: 'KnowYourCat categoryUI demo',
   chains,
 });
 
