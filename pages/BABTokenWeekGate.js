@@ -338,7 +338,7 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
               rel="noopener noreferrer"
               target="_blank"
             >
-              You can also mint your <span>Cheshire KYC</span>
+              You can also mint your <span>Cheshire NFT</span>
             </a>
           )}
         </>
