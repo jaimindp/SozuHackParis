@@ -320,37 +320,39 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
   };
 
   return (
-    categoryData?.data?.providers?.length > 0 && (
-      <div className={styles.container}>
-        <>
-          {!categoryData?.result ? (
-            <h1 className={styles.title}>
-              Follow the steps below to access the advanced limits.
-            </h1>
-          ) : (
-            <p>
-              You have synced your traits and you have access to advanced
-              restrictions
-            </p>
-          )}
-          <div className={styles.main}>
-            {!categoryData?.result && isNoSync && getRenderStepper()}
-            {getRenderProvider()}
-          </div>
-          {!isNoTrait && !isNoSync && (
-            <a
-              href={`https://knowyourcat.id/address/${address}`}
-              className={styles.link}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              You can also mint your <span>Cheshire NFT</span>
-            </a>
-          )}
-        </>
-        {((isSync && notify) || error) && syncNotify()}
-      </div>
-    )
+    <div>
+      {categoryData?.data?.providers?.length > 0 && (
+        <div className={styles.container}>
+          <>
+            {!categoryData?.result ? (
+              <h1 className={styles.title}>
+                Follow the steps below to access the advanced limits.
+              </h1>
+            ) : (
+              <p>
+                You have synced your traits and you have access to advanced
+                restrictions
+              </p>
+            )}
+            <div className={styles.main}>
+              {!categoryData?.result && isNoSync && getRenderStepper()}
+              {getRenderProvider()}
+            </div>
+            {!isNoTrait && !isNoSync && (
+              <a
+                href={`https://knowyourcat.id/address/${address}`}
+                className={styles.link}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                You can also mint your <span>Cheshire NFT</span>
+              </a>
+            )}
+          </>
+          {((isSync && notify) || error) && syncNotify()}
+        </div>
+      )}
+    </div>
   );
 }
 
