@@ -1,29 +1,22 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useState } from 'react';
-import styles from '../styles/Home.module.css';
-import BABTokenWeekGate from './BABTokenWeekGate';
-import Image from "next/image";
-import iconExport from "./images/export.svg";
+import { ConnectKitButton } from 'connectkit'
+import { useAccount } from 'wagmi'
+import { useState } from 'react'
+import Image from "next/image"
+import Account from '../components/Account'
+import BABTokenWeekGate from '../components/BABTokenWeekGate'
+import styles from '../styles/Home.module.css'
+import iconExport from "../images/export.svg"
 
 
-const Home: NextPage = () => {
+function Page() {
   const [value, setValue] = useState('')
   const [address, setAddress] = useState('')
   const [loading, setLoading] = useState(false)
   const [showGate, setShowGate] = useState(false)
 
+  const { isConnected } = useAccount()
   return (
     <div className={styles.container}>
-      <Head>
-        <title>KNOWYOURCAT</title>
-        <meta name="title" content="KnowYourCat ID | multichain NFT aggregator for you digital reputation"></meta>
-        <meta
-          content="Mutatable KnowYourCat SBT store verification, reputation, and other credentials that you have completed on web3 platforms."
-          name="description"
-        />
-      </Head>
 
       <header className={styles.header}>
         <a
@@ -63,21 +56,26 @@ const Home: NextPage = () => {
           </button>
         </div>
 
-        {showGate 
+        {/* {showGate
           ? <BABTokenWeekGate
             address={address}
             loading={loading}
             setLoading={setLoading} />
           : null
-        }
+        } */}
+        <BABTokenWeekGate
+          address={address}
+          loading={loading}
+          setLoading={setLoading} />
 
       </main>
 
       <footer className={styles.footer}>
-        <ConnectButton />
+        <ConnectKitButton />
+        {isConnected && <Account />}
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Page
