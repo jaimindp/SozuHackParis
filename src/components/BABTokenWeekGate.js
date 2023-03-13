@@ -8,11 +8,12 @@ import {
 import moment from "moment";
 import Image from "next/image";
 import styles from "../styles/BABTokenWeekGate.module.css";
-import iconOk from "./images/icon_ok.svg";
-import iconPending from "./images/icon_pending.svg";
-import iconCheckMark from "./images/check-mark-icon.svg";
-import iconAttention from "./images/attention.svg";
-import logoBABT from "./images/logoBab.svg";
+import iconOk from "../images/icon_ok.svg";
+import iconPending from "../images/icon_pending.svg";
+import iconCheckMark from "../images/check-mark-icon.svg";
+import iconAttention from "../images/attention.svg";
+import logoBABT from "../images/logoBab.svg";
+import skeletonData from "./skeletonData.json";
 
 const providersConstants = {
   BABT: {
@@ -59,7 +60,7 @@ const getDateFromNow = (byChainIds) => {
 };
 
 function BABTokenWeekGate({ address, loading, setLoading }) {
-  const [categoryData, setCategoryData] = useState({});
+  const [categoryData, setCategoryData] = useState(skeletonData);
   const [syncRequestData, setSyncRequestData] = useState(null);
   const [error, setError] = useState(null);
   const [notify, setNotify] = useState(null);
@@ -125,9 +126,9 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
   };
 
   useEffect(() => {
-    if (loading) {
-      setCategoryData({});
-    }
+    // if (loading) {
+    //   setCategoryData({});
+    // }
     setIsSync(false);
     if (address) {
       getApiData();
