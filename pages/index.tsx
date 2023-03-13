@@ -63,11 +63,12 @@ const Home: NextPage = () => {
           </button>
         </div>
 
-        {showGate &&
-          <BABTokenWeekGate
+        {showGate 
+          ? <BABTokenWeekGate
             address={address}
             loading={loading}
             setLoading={setLoading} />
+          : null
         }
 
       </main>
