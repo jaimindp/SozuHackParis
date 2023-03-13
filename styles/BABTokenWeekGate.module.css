@@ -1,7 +1,7 @@
 .container {
   margin: 20px auto;
   padding: 20px;
-  width: 490px;
+  max-width: 490px;
   background-color: #FFFFFF;
   border-radius: 23px;
   font-family: Verdana, 'Segoe UI', Tahoma, Geneva, sans-serif;
@@ -103,7 +103,7 @@
 .button_second { 
   align-self: center;
   width: 100%;
-  height: 32px;
+  min-height: 32px;
   border-radius: 12px;
   text-align: center;
   cursor: pointer;
@@ -146,7 +146,12 @@
   border-radius: 17px;
 }
 
+.status_thumb {
+  flex: 1;
+}
+
 .message {
+  flex: 1;
   margin-left: 10px;
 }
 

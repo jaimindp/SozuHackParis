@@ -269,7 +269,13 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
 
   const syncNotify = () => (
     <div className={styles.status_box}>
-      <Image src={iconAttention} alt={"icon check mark"} />
+      <div className={styles.status_tumb}>
+        <Image
+          src={iconAttention}
+          alt={"icon check mark"}
+          className={styles.status_img}
+        />
+      </div>
       <div className={styles.message}>
         {error && <p>{`Error! ${error}`}</p>}
         {!error && notify && <p>{notify}</p>}
@@ -314,8 +320,8 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
   };
 
   return (
-    <div className={styles.container}>
-      {categoryData?.data?.providers?.length > 0 && (
+    categoryData?.data?.providers?.length > 0 && (
+      <div className={styles.container}>
         <>
           {!categoryData?.result ? (
             <h1 className={styles.title}>
@@ -338,13 +344,13 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
               rel="noopener noreferrer"
               target="_blank"
             >
-              You can also mint your <span>Cheshire KYC</span>
+              You can also mint your <span>Cheshire NFT</span>
             </a>
           )}
         </>
-      )}
-      {((isSync && notify) || error) && syncNotify()}
-    </div>
+        {((isSync && notify) || error) && syncNotify()}
+      </div>
+    )
   );
 }
 
