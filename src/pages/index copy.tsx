@@ -6,7 +6,7 @@ import Account from '../components/Account'
 import BABTokenWeekGate from '../components/BABTokenWeekGate'
 import styles from '../styles/Home.module.css'
 import iconExport from "../images/export.svg"
-import LendingProtocol from '../components/lendingProtocol'
+
 
 function Page() {
   const [value, setValue] = useState('')
@@ -15,25 +15,21 @@ function Page() {
   const [showGate, setShowGate] = useState(false)
 
   const { isConnected } = useAccount()
-
-    const handleDeposit = (amount: number) => {
-        // Handle deposit here
-        console.log(`Depositing ${amount}`);
-    };
-
-    const handleBorrow = (amount: number) => {
-        // Handle borrow here
-        console.log(`Borrowing ${amount}`);
-    };
-
   return (
     <div className={styles.container}>
+
       <header className={styles.header}>
+        {/* <a
+          href={`https://github.com/KnowYourCat/knowyourcat-categoryUI-demo`}
+          className={styles.link}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Github <Image src={iconExport} alt="icon export" />
+        </a> */}
       </header>
 
       <main className={styles.main}>
-
-        <h1 className={styles.title}>UnderCat or OverCat?</h1>
 
         <div className={styles.input_box}>
           <input
@@ -60,20 +56,18 @@ function Page() {
           </button>
         </div>
 
+        {/* {showGate
+          ? <BABTokenWeekGate
+            address={address}
+            loading={loading}
+            setLoading={setLoading} />
+          : null
+        } */}
         <BABTokenWeekGate
           address={address}
           loading={loading}
           setLoading={setLoading} />
 
-        <div className={styles.appPlaceholder}>
-          <h2 className={styles.appTitle}>Lending Protocol dApp</h2>
-        </div>
-        <div>
-          <div>
-            <h1>My Crypto Lending Protocol</h1>
-            <LendingProtocol onDeposit={handleDeposit} onBorrow={handleBorrow} />
-          </div>
-        </div>
       </main>
 
       <footer className={styles.footer}>
@@ -83,6 +77,5 @@ function Page() {
     </div>
   )
 }
-
 
 export default Page

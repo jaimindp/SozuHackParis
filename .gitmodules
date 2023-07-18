@@ -1,0 +1,3 @@
+[submodule "knowyourcat-sdk"]
+	path = knowyourcat-sdk
+	url = https://github.com/KnowYourCat/knowyourcat-sdk.git
