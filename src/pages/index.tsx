@@ -1,6 +1,6 @@
 import { ConnectKitButton } from 'connectkit'
 import { useAccount } from 'wagmi'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from "next/image"
 import Account from '../components/Account'
 import BABTokenWeekGate from '../components/BABTokenWeekGate'
@@ -8,13 +8,36 @@ import styles from '../styles/Home.module.css'
 import iconExport from "../images/export.svg"
 import LendingProtocol from '../components/lendingProtocol'
 import React from 'react'
+import { Antibot } from  'zkme-antibot-component';
+import dynamic from 'next/dynamic'
+
+const ZKMeAntiBotComponent = dynamic(
+  () => import('zkme-antibot-component'),
+  { ssr: false }
+)
+
 
 function Page() {
   const [value, setValue] = useState('')
   const [address, setAddress] = useState('')
   const [loading, setLoading] = useState(false)
   const [showGate, setShowGate] = useState(false)
-  const [kyc, setKYC] = useState(false)
+  const [kyc1, setKYC1] = useState(false)
+  const [kyc2, setKYC2] = useState(false)
+  const [isOpen, setIsOpen] = useState(true);
+  const verifySuccess = (response) => {
+    console.log(response); //print out the face image in base64 code
+    setIsOpen(false); //close the popup window
+  };
+
+
+  useEffect(() => {
+    if (address) {
+      console.log('Address is: ', address);
+      // Add your logic here
+      setAddress(address)
+    }
+  }, [address]);
 
   const { isConnected } = useAccount()
 
@@ -35,7 +58,7 @@ function Page() {
 
       <main className={styles.main}>
 
-        <h1 className={styles.title}>UnderCat or OverCat?</h1>
+        <h1 className={styles.title}>Le UnderCat or OverCat?</h1>
 
         <div className={styles.input_box}>
           <input
@@ -66,34 +89,34 @@ function Page() {
           address={address}
           loading={loading}
           setLoading={setLoading} 
-          setKYC={setKYC}
+          setKYC={setKYC1}
           />
 
-        {!kyc ?
+        {!kyc1 ?
         <div>
-              <h1>Cat says over</h1>
-        </div> :
+              <h1>Le Chat Lending (Over)</h1>
+        </div> : (!kyc2) ?
         <div>
-          <div className={styles.appPlaceholder}>
-            <h2 className={styles.appTitle}>Lending Protocol dApp</h2>
-          </div>
           <div>
             <div>
-              <h1>Cat says under Lending Protocol</h1>
+              <h1>You're eligible for undercollateralised lending tier 1</h1>
               <LendingProtocol onDeposit={handleDeposit} onBorrow={handleBorrow} />
             </div>
           </div>
         </div>
+        :
+        <div>
+          {/* <Antibot isOpen={isOpen} verifySuccess={verifySuccess} />
+          <Antibot isOpen={true} /> */}
+        </div>
         }
-      </main>
-
+    </main>
       <footer className={styles.footer}>
         <ConnectKitButton />
-        {isConnected && <Account />}
+        {isConnected && <Account { ...setAddress }/>}
       </footer>
     </div>
   )
 }
-
 
 export default Page
