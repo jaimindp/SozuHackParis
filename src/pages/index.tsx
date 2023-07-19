@@ -58,7 +58,7 @@ function Page() {
 
       <main className={styles.main}>
 
-        <h1 className={styles.title}>Le UnderCat or OverCat?</h1>
+        <h1 className={styles.title}>L'UnderChat or OverChat?</h1>
 
         <div className={styles.input_box}>
           <input
@@ -91,25 +91,7 @@ function Page() {
           setLoading={setLoading} 
           setKYC={setKYC1}
           />
-
-        {!kyc1 ?
-        <div>
-              <h1>Le Chat Lending (Over)</h1>
-        </div> : (!kyc2) ?
-        <div>
-          <div>
-            <div>
-              <h1>You're eligible for undercollateralised lending tier 1</h1>
-              <LendingProtocol onDeposit={handleDeposit} onBorrow={handleBorrow} />
-            </div>
-          </div>
-        </div>
-        :
-        <div>
-          {/* <Antibot isOpen={isOpen} verifySuccess={verifySuccess} />
-          <Antibot isOpen={true} /> */}
-        </div>
-        }
+          <LendingProtocol onDeposit={handleDeposit} onBorrow={handleBorrow} under={kyc1} />
     </main>
       <footer className={styles.footer}>
         <ConnectKitButton />

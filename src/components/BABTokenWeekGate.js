@@ -286,7 +286,7 @@ function BABTokenWeekGate({ address, loading, setLoading, setKYC}) {
         />
       </div>
       <div className={styles.message}>
-        {error && <p>{`Error! ${error}`}</p>}
+        {error && <p>{`You haven't KYC'd, use the overcollateralised lending app below`}</p>}
         {!error && notify && <p>{notify}</p>}
       </div>
     </div>
