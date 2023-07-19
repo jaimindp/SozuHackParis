@@ -59,7 +59,7 @@ const getDateFromNow = (byChainIds) => {
   return moment.unix(timestamp).fromNow();
 };
 
-function BABTokenWeekGate({ address, loading, setLoading }) {
+function BABTokenWeekGate({ address, loading, setLoading, setKYC}) {
   const [categoryData, setCategoryData] = useState(skeletonData);
   const [syncRequestData, setSyncRequestData] = useState(null);
   const [error, setError] = useState(null);
@@ -113,6 +113,14 @@ function BABTokenWeekGate({ address, loading, setLoading }) {
       const responseCategory = await fetchData(address);
       if (responseCategory) {
         setCategoryData(responseCategory);
+        if (responseCategory.result) {
+          console.log('showUndercollat')
+          setKYC(true)
+        }
+        else {
+          console.log('overcollat')
+          setKYC(false)
+        }
       }
       if (setLoading) {
         setLoading(false);

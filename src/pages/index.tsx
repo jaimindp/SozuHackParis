@@ -7,12 +7,14 @@ import BABTokenWeekGate from '../components/BABTokenWeekGate'
 import styles from '../styles/Home.module.css'
 import iconExport from "../images/export.svg"
 import LendingProtocol from '../components/lendingProtocol'
+import React from 'react'
 
 function Page() {
   const [value, setValue] = useState('')
   const [address, setAddress] = useState('')
   const [loading, setLoading] = useState(false)
   const [showGate, setShowGate] = useState(false)
+  const [kyc, setKYC] = useState(false)
 
   const { isConnected } = useAccount()
 
@@ -63,17 +65,26 @@ function Page() {
         <BABTokenWeekGate
           address={address}
           loading={loading}
-          setLoading={setLoading} />
+          setLoading={setLoading} 
+          setKYC={setKYC}
+          />
 
-        <div className={styles.appPlaceholder}>
-          <h2 className={styles.appTitle}>Lending Protocol dApp</h2>
-        </div>
+        {!kyc ?
         <div>
+              <h1>Cat says over</h1>
+        </div> :
+        <div>
+          <div className={styles.appPlaceholder}>
+            <h2 className={styles.appTitle}>Lending Protocol dApp</h2>
+          </div>
           <div>
-            <h1>My Crypto Lending Protocol</h1>
-            <LendingProtocol onDeposit={handleDeposit} onBorrow={handleBorrow} />
+            <div>
+              <h1>Cat says under Lending Protocol</h1>
+              <LendingProtocol onDeposit={handleDeposit} onBorrow={handleBorrow} />
+            </div>
           </div>
         </div>
+        }
       </main>
 
       <footer className={styles.footer}>
