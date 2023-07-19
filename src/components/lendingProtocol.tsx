@@ -21,13 +21,13 @@ const pools = {
 };
 const prices = {
     "DAI": 1.0,
-    "LINK": 7.42,
+    "LINK": 6.92,
     "USDC": 1.0,
-    "WBTC": 20733.55,
-    "WETH": 1215.86,
+    "WBTC": 2997.55,
+    "WETH": 1910.86,
     "USDT": 1.0,
-    "AAVE": 71.14,
-    "EURS": 1.0,
+    "AAVE": 72.14,
+    "EURS": 1.12,
 }
 
 const LendingProtocol: React.FC<LendingProtocolProps> = ({ onDeposit, onBorrow, under }) => {
